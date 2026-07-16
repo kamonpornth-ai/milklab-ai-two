@@ -25,4 +25,4 @@ jobs:
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python sales_logger.py
+        run: python sales_logger.py --menu "ชานมไข่มุกพ่นไฟ" --qty 18 --price 3120
