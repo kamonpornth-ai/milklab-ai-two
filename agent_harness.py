@@ -19,43 +19,42 @@ from google import genai
 
 
 TOOL_SCHEMA = [
-    {
-        "name": "log_sale",
-        "description": "บันทึกการขายลง Google Sheets และส่ง notification",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "menu": {"type": "string", "description": "ชื่อเมนู"},
-                "qty": {"type": "integer", "description": "จำนวนที่ขาย"},
-                "price": {"type": "number", "description": "ราคาต่อหน่วย"},
-            },
-            "required": ["menu", "qty", "price"],
-        },
-    },
-    {
-        "name": "query_sales",
-        "description": "ดูยอดขายของวันที่ระบุ",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "date": {"type": "string", "description": "วันที่ format YYYY-MM-DD"},
-            },
-            "required": ["date"],
-        },
-    },
-    {
-        "name": "send_alert",
-        "description": "ส่ง message แจ้งเตือนผ่าน Bot",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "message": {"type": "string"},
-            },
-            "required": ["message"],
-        },
-    },
+  {
+    "name": "log_sale",
+    "description": "บันทึกการขายลง Google Sheets และส่ง notification",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "menu": { "type": "string", "description": "ชื่อเมนู" },
+        "qty": { "type": "integer", "description": "จำนวนที่ขาย" },
+        "price": { "type": "number", "description": "ราคาต่อหน่วย" }
+      },
+      "required": ["menu", "qty", "price"]
+    }
+  },
+  {
+    "name": "query_sales",
+    "description": "ดูยอดขายของวันที่ระบุ",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "date": { "type": "string", "description": "วันที่ format YYYY-MM-DD" }
+      },
+      "required": ["date"]
+    }
+  },
+  {
+    "name": "send_alert",
+    "description": "ส่ง message แจ้งเตือนผ่าน Bot",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "message": { "type": "string", "description": "ข้อความแจ้งเตือน" }
+      },
+      "required": ["message"]
+    }
+  }
 ]
-
 
 def parse_command(cmd: str, api_key: str | None = None) -> dict:
     """TODO 1: ส่ง cmd ไป Gemini พร้อม TOOL_SCHEMA ขอให้ตอบเป็น JSON {tool, args}
